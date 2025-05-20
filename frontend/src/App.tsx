@@ -1,13 +1,15 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login/Login";
 
-import './App.css'
-
-function App() {
-
+const App: React.FC = () => {
   return (
-    <div>
-      <p className=' text'>Hello world</p>
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
