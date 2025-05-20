@@ -8,7 +8,7 @@ type FormProps = {
 
 const Form: React.FC<FormProps> = ({ children }) => {
   return (
-    <div>
+    <div className="flex h-screen overflow-hidden">
       <FormLeft />
       <FormRight>{children}</FormRight>
     </div>
