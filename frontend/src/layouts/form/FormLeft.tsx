@@ -1,12 +1,15 @@
 import React from "react";
-import bg_cover from "../../assets/form/formLeftBg.png";
 import qtblog from "../../assets/form/qtblog.svg";
 
-const FormLeft: React.FC = () => {
+type FormLeftProps = {
+  image: string;
+}
+
+const FormLeft: React.FC<FormLeftProps> = ({image}) => {
   return (
     <div className="hidden md:block md:w-1/2 h-full relative">
       <img
-        src={bg_cover}
+        src={image}
         alt="Form Background"
         className="w-full h-full object-cover"
       />

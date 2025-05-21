@@ -3,13 +3,14 @@ import FormLeft from "./FormLeft";
 import FormRight from "./FormRight";
 
 type FormProps = {
+  image: string;
   children: ReactNode;
 };
 
-const Form: React.FC<FormProps> = ({ children }) => {
+const Form: React.FC<FormProps> = ({ image, children }) => {
   return (
     <div className="flex h-screen overflow-hidden">
-      <FormLeft />
+      <FormLeft image={image} />
       <FormRight>{children}</FormRight>
     </div>
   );
