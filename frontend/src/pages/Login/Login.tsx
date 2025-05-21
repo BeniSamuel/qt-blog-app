@@ -1,10 +1,11 @@
 import React from "react";
 import Form from "../../layouts/form/Form";
 import Checkbox from "../../components/form/checkbox/Checkbox";
+import bg_cover from "../../assets/form/formLeftBg.png"
 
 const Login: React.FC = () => {
   return (
-    <Form>
+    <Form image={bg_cover}>
       <div className=" flex flex-col justify-center gap-4">
         <div className=" leading-7">
           <div className=" font-urbanist font-bold text-2xl">Welcome back!</div>
@@ -20,7 +21,7 @@ const Login: React.FC = () => {
             <input
               type="email"
               placeholder="example@qtblog.rw"
-              className=" placeholder:font-urbanist placeholder:text-[#DDDDDD] border-2 border-[#DDDDDD] py-3 px-4 rounded-md"
+              className=" placeholder:font-urbanist placeholder:text-[#DDDDDD] border-2 border-[#DDDDDD] py-3 px-4 rounded-md font-urbanist"
             />
           </div>
           <div className=" flex flex-col gap-2">
@@ -28,7 +29,7 @@ const Login: React.FC = () => {
             <input
               type="password"
               placeholder="ooooo"
-              className=" placeholder:font-urbanist placeholder:text-[#DDDDDD] border-2 border-[#DDDDDD] py-3 px-4 rounded-md"
+              className=" placeholder:font-urbanist placeholder:text-[#DDDDDD] border-2 border-[#DDDDDD] py-3 px-4 rounded-md font-urbanist"
             />
           </div>
           <div className=" flex flex-row justify-between">
