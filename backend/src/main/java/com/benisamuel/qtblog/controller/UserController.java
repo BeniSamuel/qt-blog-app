@@ -41,4 +41,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse<>(false, "Failed to obtain user!!!", null));
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<ApiResponse<User>> getCurrentUser () {
+        return ResponseEntity.ok(new ApiResponse<>(true, "Successfully obtained active user!!!", this.userService.getCurrentUser()));
+    }
 }
