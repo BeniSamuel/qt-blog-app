@@ -1,6 +1,7 @@
 import React from "react";
 import blogLogo from "../../../assets/dashboard/qtblog.svg";
 import notification from "../../../assets/dashboard/notification.svg";
+import UserProfile from "./UserProfile";
 
 const Navbar: React.FC = () => {
   return (
@@ -11,8 +12,9 @@ const Navbar: React.FC = () => {
         <div className=" font-urbanist font-medium">Blogs</div>
         <div className=" font-urbanist font-medium">Add blog</div>
       </div>
-      <div>
+      <div className=" flex flex-row items-center gap-4">
         <img src={notification}/>
+        <UserProfile />
       </div>
     </div>
   );
