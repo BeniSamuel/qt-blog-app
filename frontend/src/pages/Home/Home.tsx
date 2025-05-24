@@ -1,14 +1,14 @@
-import React from 'react'
-import Navbar from '../../components/dashboard/navbar/Navbar'
-import Intro from '../../components/dashboard/Intro/Intro'
+import React from "react";
+import Navbar from "../../components/dashboard/navbar/Navbar";
+import Intro from "../../components/dashboard/Intro/Intro";
 
-const Home:React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
-        <Navbar />
-        <Intro />
+      <Navbar />
+      <Intro />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
