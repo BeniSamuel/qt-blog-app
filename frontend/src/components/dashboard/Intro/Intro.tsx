@@ -3,7 +3,7 @@ import qtBlogCover from "../../../assets/dashboard/qtBlogCover.svg";
 
 const Intro: React.FC = () => {
   return (
-    <div className=" bg-[#F6F9FF] h-80 flex flex-row justify-center gap-80 pb-20">
+    <div className=" bg-[#F6F9FF] h-80 flex flex-row justify-center md:gap-80 pb-20">
       <div className=" flex flex-row items-center gap-5">
         <img src={qtBlogCover} className=" h-28"/>
         <span className=" font-urbanist text-3xl font-bold text-[#143751]">Qtblog</span>
