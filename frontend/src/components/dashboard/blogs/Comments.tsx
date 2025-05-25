@@ -1,65 +1,73 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import Blog from "./Blog";
 import { useNavigate } from "react-router-dom";
+import Comment from "./Comment";
 
-type BlogInform = {
+type CommentInform = {
   id: number;
-  title: string;
   content: string;
-  cover: string;
-  posted_at: Date;
+  comment_at: Date;
   user: {
     id: number;
     name: string;
     email: string;
   };
+  post: {
+    id: number;
+    title: string;
+    content: string;
+    posted_at: Date;
+  };
 };
 
-const Blogs: React.FC = () => {
-  const [blogs, setBlogs] = useState<BlogInform[]>([]);
+type CommentProp = {
+  id: string | undefined;
+};
+
+const Comments: React.FC<CommentProp> = ({ id }) => {
+  const [comment, setComment] = useState<CommentInform[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getAllBlogs = async () => {
+    const getAllComment = async () => {
       setLoading(true);
       setError(null);
 
       try {
         const token = localStorage.getItem("authToken");
         const response: AxiosResponse = await axios.get(
-          "http://localhost:8080/api/qtblog/post/all",
+          `http://localhost:8080/api/qtblog/comment/post/${id}/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-
+        console.log(response.data)
         if (response.data.success && Array.isArray(response.data.data)) {
-          setBlogs(response.data.data);
+          setComment(response.data.data);
         } else {
           setError("Unexpected data format from server.");
         }
       } catch (err) {
-        console.error("Error while fetching blogs:", err);
-        setError("Failed to load blogs. Please try again later.");
+        console.error("Error while fetching comment:", err);
+        setError("Failed to load comment. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
 
-    getAllBlogs();
-  }, []);
+    getAllComment();
+  }, [comment]);
 
   return (
-    <div className="relative z-30 py-12">
-      <div className="absolute left-1/2 top-[-3rem] transform -translate-x-1/2 w-full max-w-5xl px-4 pb-12 space-y-6 bg-white rounded-3xl">
+    <div>
+      <div className="">
         {loading && (
           <p className="text-blue-500 text-center font-urbanist font-semibold">
-            Loading blogs...
+            Loading comments...
           </p>
         )}
 
@@ -69,22 +77,26 @@ const Blogs: React.FC = () => {
           </p>
         )}
 
-        {!loading && blogs.length === 0 && !error && (
+        {!loading && comment.length === 0 && !error && (
           <p className="text-gray-500 text-center font-urbanist">
-            No blogs available.
+            No comments available.
           </p>
         )}
 
-        {blogs.map((blog) => (
-          <div onClick={() => {navigate(`/blog/${blog.id}`)}}>
-            <Blog
-              key={blog.id}
-              id={blog.id}
-              cover={blog.cover}
-              title={blog.title}
-              content={blog.content}
-              posted_at={blog.posted_at}
-              user={blog.user}
+        {comment.map((comment) => (
+          <div
+            onClick={() => {
+              navigate(`/blog/${comment.id}`);
+            }}
+            className=" flex flex-col gap-6"
+          >
+            <Comment
+              key={comment.id}
+              content={comment.content}
+              comment_at={comment.comment_at}
+              user={comment.user}
+              id={comment.id}
+              post={comment.post}
             />
           </div>
         ))}
@@ -93,4 +105,4 @@ const Blogs: React.FC = () => {
   );
 };
 
-export default Blogs;
+export default Comments;
