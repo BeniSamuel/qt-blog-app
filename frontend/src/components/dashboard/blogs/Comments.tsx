@@ -60,7 +60,7 @@ const Comments: React.FC<CommentProp> = ({ id }) => {
     };
 
     getAllComment();
-  }, [comment]);
+  }, [comment, id]);
 
   return (
     <div>
